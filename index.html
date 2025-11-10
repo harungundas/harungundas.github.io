@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Estetik Dönüşüm Stüdyosu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+          margin: 0;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          overflow: hidden; /* Prevent scrollbars from animation */
+      }
+      .gradient-bg {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+        background: #111827;
+        z-index: 0;
+      }
+      .gradient-ball {
+        position: absolute;
+        border-radius: 100%;
+        background: radial-gradient(circle at center, rgba(139, 92, 246, 0.8) 0%, rgba(139, 92, 246, 0) 70%);
+        mix-blend-mode: screen;
+        filter: blur(80px);
+        will-change: transform;
+      }
+      .ball-1 {
+        width: 400px;
+        height: 400px;
+        top: 10%;
+        left: 10%;
+        animation: move 15s infinite alternate;
+      }
+      .ball-2 {
+        width: 500px;
+        height: 500px;
+        top: 60%;
+        left: 70%;
+        background: radial-gradient(circle at center, rgba(34, 211, 238, 0.8) 0%, rgba(34, 211, 238, 0) 70%);
+        animation: move 18s infinite alternate-reverse;
+      }
+      .ball-3 {
+        width: 300px;
+        height: 300px;
+        bottom: 5%;
+        left: 30%;
+         background: radial-gradient(circle at center, rgba(236, 72, 153, 0.8) 0%, rgba(236, 72, 153, 0) 70%);
+        animation: move 12s infinite alternate;
+      }
+
+      @keyframes move {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          transform: translate(100px, 150px) scale(1.2);
+        }
+      }
+      #root-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        z-index: 1;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div class="gradient-bg">
+      <div class="gradient-ball ball-1"></div>
+      <div class="gradient-ball ball-2"></div>
+      <div class="gradient-ball ball-3"></div>
+    </div>
+    <div id="root-container">
+      <div id="root" class="text-white"></div>
+    </div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
